@@ -4,7 +4,7 @@ module.exports = {
       name: "novan",
       script: "npm",
       args: "run preview",
-      cwd: "/Users/omar/Code/Novan",
+      cwd: __dirname,
       instances: 1,
       exec_mode: "fork",
       env: {
