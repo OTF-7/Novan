@@ -12,6 +12,13 @@ node_modules/
 # os
 .DS_Store
 
+# pm2 runtime logs
+logs/
+
+# local tooling
+.claude/
+
 # design handoff artifacts (kept locally for reference)
+design_bundle/
 design_response.txt
 design_decoded.txt
