@@ -10,7 +10,7 @@ export default defineConfig({
   },
   vite: {
     preview: {
-      allowedHosts: ["novan.omartaha.net"],
+      allowedHosts: ["novan.omartaha.net", "novanwater.com", "www.novanwater.com"],
     },
   },
 });
