@@ -1,0 +1,79 @@
+---
+const cards = [
+  {
+    delay: "",
+    phLabel: "Relief distribution",
+    img: "https://images.unsplash.com/photo-1538300342682-cf57afb97285?auto=format&fit=crop&w=900&q=80",
+    alt: "Hands cupping clean water",
+    tag: "Relief",
+    tagAr: "إغاثة",
+    title: "Clean water in hard seasons",
+    titleAr: "مياه نظيفة في المواسم الصعبة",
+    desc: "Emergency water delivered to families and shelters across the region.",
+    descAr: "مياه طارئة تصل إلى العائلات والمآوي في مختلف أنحاء المنطقة.",
+  },
+  {
+    delay: "d1",
+    phLabel: "School children",
+    img: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
+    alt: "Smiling school children",
+    tag: "Schools",
+    tagAr: "مدارس",
+    title: "Hydration for classrooms",
+    titleAr: "ماء نقي للفصول الدراسية",
+    desc: "Supplying schools so every student learns with clean water on hand.",
+    descAr: "نزوّد المدارس ليتعلّم كل طالب ومعه مياه نظيفة.",
+  },
+  {
+    delay: "d2",
+    phLabel: "Community gathering",
+    img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80",
+    alt: "Shared dinner table",
+    tag: "Ramadan",
+    tagAr: "رمضان",
+    title: "At every iftar table",
+    titleAr: "على كل مائدة إفطار",
+    desc: "Seasonal giving that keeps community gatherings refreshed and dignified.",
+    descAr: "عطاء موسمي يبقي تجمّعات المجتمع منتعشة وكريمة.",
+  },
+];
+---
+
+<section class="comm section-pad" id="community">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="kicker reveal" data-en="Community" data-ar="المجتمع">Community</span>
+      <h2 class="reveal d1">
+        <span data-en="Water is " data-ar="الماء ">Water is </span><span
+          class="accent"
+          data-en="meant to be shared."
+          data-ar="يُقصد به أن يُشارَك.">meant to be shared.</span
+        >
+      </h2>
+    </div>
+
+    <div class="comm-grid">
+      {
+        cards.map((c) => (
+          <article class={`comm-card reveal ${c.delay}`}>
+            <div class="cimg media">
+              <div class="ph" data-label={c.phLabel} />
+              <img class="cover" loading="lazy" alt={c.alt} src={c.img} />
+            </div>
+            <div class="cbody">
+              <span class="ctag" data-en={c.tag} data-ar={c.tagAr}>
+                {c.tag}
+              </span>
+              <h3 data-en={c.title} data-ar={c.titleAr}>
+                {c.title}
+              </h3>
+              <p data-en={c.desc} data-ar={c.descAr}>
+                {c.desc}
+              </p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

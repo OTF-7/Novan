@@ -1,0 +1,103 @@
+---
+/* Path-style water footer (verified against drinkpathwater.com):
+   their wave is an SVG path regenerated every frame (wavify.js) — a
+   full-width water surface that undulates in place. We recreate the
+   same mechanic in ~30 lines of vanilla TS (see main.ts), with the
+   gradient-filled path forming the water body itself. No bottle. */
+---
+
+<footer class="footer" id="footer">
+  <div class="shore" aria-hidden="true">
+    <div class="water-label" data-en="Still. Pure. Novan." data-ar="هادئة. نقية. نوفان.">Still. Pure. Novan.</div>
+  </div>
+
+  <div class="sea">
+    <!-- the water: a living wave drawn by JS; static gentle wave pre-JS -->
+    <svg class="sea-svg" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="novan-sea-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="oklch(0.60 0.065 236)"></stop>
+          <stop offset="0.38" stop-color="oklch(0.40 0.068 248)"></stop>
+          <stop offset="1" stop-color="oklch(0.245 0.040 252)"></stop>
+        </linearGradient>
+      </defs>
+      <path
+        id="footer-wave"
+        fill="url(#novan-sea-grad)"
+        d="M 0 604 L 0 40 C 180 40 180 50.91 360 50.91 C 540 50.91 540 37.19 720 37.19 C 900 37.19 900 29.82 1080 29.82 C 1260 29.82 1260 45.44 1440 45.44 L 1440 604 Z"
+      ></path>
+    </svg>
+
+    <div class="sea-body">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="brand">
+              <span class="brand-mark">
+                <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                  <path
+                    d="M16 2C16 2 5 14.5 5 21.5C5 27.3 9.9 31 16 31C22.1 31 27 27.3 27 21.5C27 14.5 16 2 16 2Z"
+                    fill="oklch(0.62 0.09 210)"></path>
+                  <ellipse cx="12" cy="22" rx="2.4" ry="3.4" fill="white" opacity="0.45"></ellipse>
+                </svg>
+              </span>
+              <span class="brand-name" data-en="Novan" data-ar="نوفان">Novan</span>
+            </div>
+            <p
+              class="footer-blurb"
+              data-en="Premium natural water, drawn from the Saada highlands and bottled with obsessive care since 2007."
+              data-ar="مياه طبيعية فاخرة، تُستخرج من مرتفعات صعدة وتُعبّأ بعناية فائقة منذ 2007."
+            >
+              Premium natural water, drawn from the Saada highlands and bottled with obsessive care since
+              2007.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h3 data-en="Explore" data-ar="استكشف">Explore</h3>
+            <a href="#story" data-en="Our Source" data-ar="مصدرنا">Our Source</a>
+            <a href="#range" data-en="The Range" data-ar="منتجاتنا">The Range</a>
+            <a href="#films" data-en="Films" data-ar="الأفلام">Films</a>
+            <a href="#process" data-en="Purity" data-ar="النقاء">Purity</a>
+          </div>
+          <div class="footer-col">
+            <h3 data-en="Business" data-ar="الأعمال">Business</h3>
+            <a href="#contact" data-en="Become a partner" data-ar="كن شريكاً">Become a partner</a>
+            <a href="#contact" data-en="Distribution" data-ar="التوزيع">Distribution</a>
+            <a href="#voices" data-en="HoReCa" data-ar="الفنادق والمطاعم">HoReCa</a>
+            <a href="#contact" data-en="Bulk orders" data-ar="طلبات الجملة">Bulk orders</a>
+          </div>
+          <div class="footer-col">
+            <h3 data-en="Contact" data-ar="تواصل">Contact</h3>
+            <p data-en="Saada, Yemen" data-ar="صعدة، اليمن">Saada, Yemen</p>
+            <a href="mailto:hello@novanwater.com">hello@novanwater.com</a>
+            <a href="tel:+967">+967 · · · · ·</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span data-en="© 2026 Novan Water. All rights reserved." data-ar="© 2026 نوفان ووتر. جميع الحقوق محفوظة."
+            >© 2026 Novan Water. All rights reserved.</span
+          >
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"
+              ><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                ><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"
+                ></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg
+              ></a
+            >
+            <a href="#" aria-label="Facebook"
+              ><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                ><path d="M15 3h-3a4 4 0 00-4 4v3H5v4h3v7h4v-7h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg
+              ></a
+            >
+            <a href="#" aria-label="X"
+              ><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                ><path d="M18 2h3l-7 8 8 12h-6l-5-7-5 7H3l8-9L3 2h6l4 6z"></path></svg
+              ></a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="sea-name" data-en="NOVAN" data-ar="نوفان" aria-hidden="true">NOVAN</div>
+    </div>
+  </div>
+</footer>

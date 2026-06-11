@@ -1,0 +1,94 @@
+---
+const films = [
+  {
+    video: "1La4QzGeaaQ",
+    title: "The Source",
+    titleAr: "المصدر",
+    num: "01",
+    phLabel: "Film — the source",
+    img: "https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&fit=crop&w=1400&q=80",
+    alt: "Mountain stream over rocks",
+  },
+  {
+    video: "LXb3EKWsInQ",
+    title: "The Process",
+    titleAr: "العملية",
+    num: "02",
+    phLabel: "Film — the process",
+    img: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=1400&q=80",
+    alt: "Water being poured into a glass",
+  },
+  {
+    video: "BHACKCNDMW8",
+    title: "The Taste",
+    titleAr: "المذاق",
+    num: "03",
+    phLabel: "Film — the taste",
+    img: "https://images.unsplash.com/photo-1519455953755-af066f52f1a6?auto=format&fit=crop&w=1400&q=80",
+    alt: "Water splash at golden hour",
+  },
+];
+---
+
+<section class="films band section-pad" id="films">
+  <div class="wrap">
+    <div class="films-top">
+      <div class="sec-head">
+        <span class="kicker reveal" data-en="Films" data-ar="الأفلام">Films</span>
+        <h2 class="reveal d1">
+          <span data-en="From the mountain, " data-ar="من الجبل، ">From the mountain, </span><span
+            class="accent"
+            data-en="to your glass."
+            data-ar="إلى كأسك.">to your glass.</span
+          >
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="films-track-wrap" data-fx="grow">
+    <div class="films-track">
+      {
+        films.map((f) => (
+          <div
+            class="film-card media"
+            role="button"
+            tabindex="0"
+            data-video={f.video}
+            aria-label={`Play: ${f.title}`}
+            data-aria-en={`Play: ${f.title}`}
+            data-aria-ar={`تشغيل: ${f.titleAr}`}
+          >
+            <div class="ph" data-label={f.phLabel} />
+            <img class="cover" loading="lazy" alt={f.alt} src={f.img} />
+            <div class="film-scrim" />
+            <span class="film-play">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </span>
+            <div class="film-meta">
+              <span class="ft" data-en={f.title} data-ar={f.titleAr}>
+                {f.title}
+              </span>
+              <span class="fn">{f.num}</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="films-nav">
+    <button class="films-prev" aria-label="Previous film" data-aria-en="Previous film" data-aria-ar="الفيلم السابق"
+      ><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        ><path d="M19 12H5M12 19l-7-7 7-7"></path></svg
+      ></button
+    >
+    <button class="films-next" aria-label="Next film" data-aria-en="Next film" data-aria-ar="الفيلم التالي"
+      ><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        ><path d="M5 12h14M12 5l7 7-7 7"></path></svg
+      ></button
+    >
+  </div>
+</section>
