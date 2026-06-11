@@ -8,4 +8,9 @@ export default defineConfig({
     /* keep all CSS external so the CSP never needs style-src 'unsafe-inline' */
     inlineStylesheets: "never",
   },
+  vite: {
+    preview: {
+      allowedHosts: ["novan.omartaha.net"],
+    },
+  },
 });
