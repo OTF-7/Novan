@@ -8,12 +8,9 @@ export default defineConfig({
     /* keep all CSS external so the CSP never needs style-src 'unsafe-inline' */
     inlineStylesheets: "never",
   },
-  vite: {
-    server: {
-      allowedHosts: true,
-    },
-    preview: {
-      allowedHosts: true,
-    },
+  /* astro preview builds its own Vite config (configFile: false) and only
+     reads the top-level `server` option — vite.preview.* is ignored */
+  server: {
+    allowedHosts: ["novan.omartaha.net", "novanwater.com", "www.novanwater.com"],
   },
 });
