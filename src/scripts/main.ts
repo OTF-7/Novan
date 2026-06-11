@@ -442,6 +442,9 @@ if (menuBtn && mobileMenu) {
   const setMenu = (open: boolean) => {
     mobileMenu.classList.toggle("open", open);
     menuBtn.classList.toggle("open", open);
+    /* the open menu has a light backdrop — force the header into its dark
+       (scrolled-style) treatment so the brand/toggle/X stay legible */
+    header?.classList.toggle("menu-open", open);
     menuBtn.setAttribute("aria-expanded", String(open));
   };
   menuBtn.addEventListener("click", () => setMenu(!mobileMenu.classList.contains("open")));

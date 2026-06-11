@@ -1,32 +1,13 @@
 ---
+/* Real Novan films. Thumbnails are pulled straight from YouTube so the
+   poster always matches the clip (hqdefault is guaranteed to exist for
+   every video; object-fit:cover trims it to the 16/9 card).
+   Titles are editorial placeholders — rename to match each clip. */
 const films = [
-  {
-    video: "1La4QzGeaaQ",
-    title: "The Source",
-    titleAr: "المصدر",
-    num: "01",
-    phLabel: "Film — the source",
-    img: "https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&fit=crop&w=1400&q=80",
-    alt: "Mountain stream over rocks",
-  },
-  {
-    video: "LXb3EKWsInQ",
-    title: "The Process",
-    titleAr: "العملية",
-    num: "02",
-    phLabel: "Film — the process",
-    img: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=1400&q=80",
-    alt: "Water being poured into a glass",
-  },
-  {
-    video: "BHACKCNDMW8",
-    title: "The Taste",
-    titleAr: "المذاق",
-    num: "03",
-    phLabel: "Film — the taste",
-    img: "https://images.unsplash.com/photo-1519455953755-af066f52f1a6?auto=format&fit=crop&w=1400&q=80",
-    alt: "Water splash at golden hour",
-  },
+  { video: "2fXPhB-rTH4", title: "The Source", titleAr: "المصدر", num: "01" },
+  { video: "OgliKEVJBr4", title: "The Process", titleAr: "العملية", num: "02" },
+  { video: "sf-Q_y3p33Y", title: "The Taste", titleAr: "المذاق", num: "03" },
+  { video: "32Yw78l9Uss", title: "The Journey", titleAr: "الرحلة", num: "04" },
 ];
 ---
 
@@ -59,8 +40,13 @@ const films = [
             data-aria-en={`Play: ${f.title}`}
             data-aria-ar={`تشغيل: ${f.titleAr}`}
           >
-            <div class="ph" data-label={f.phLabel} />
-            <img class="cover" loading="lazy" alt={f.alt} src={f.img} />
+            <div class="ph" data-label={f.title} />
+            <img
+              class="cover"
+              loading="lazy"
+              alt={`Novan film: ${f.title}`}
+              src={`https://i.ytimg.com/vi/${f.video}/hqdefault.jpg`}
+            />
             <div class="film-scrim" />
             <span class="film-play">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">

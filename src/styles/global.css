@@ -202,25 +202,25 @@ html[dir="rtl"] .brand-name { font-family: var(--arabic-d); }
 .menu-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 /* ---- adaptive header: light-on-image until scrolled ---- */
-.header:not(.scrolled) .brand-name { color: #fff; }
-.header:not(.scrolled) .nav-links a { color: oklch(0.93 0.015 210); }
-.header:not(.scrolled) .nav-links a:hover { color: #fff; }
-.header:not(.scrolled) .nav-links a::after { background: var(--ice); }
-.header:not(.scrolled) .lang-toggle {
+.header:not(.scrolled):not(.menu-open) .brand-name { color: #fff; }
+.header:not(.scrolled):not(.menu-open) .nav-links a { color: oklch(0.93 0.015 210); }
+.header:not(.scrolled):not(.menu-open) .nav-links a:hover { color: #fff; }
+.header:not(.scrolled):not(.menu-open) .nav-links a::after { background: var(--ice); }
+.header:not(.scrolled):not(.menu-open) .lang-toggle {
   border-color: oklch(1 0 0 / 0.35);
   background: oklch(1 0 0 / 0.1);
   backdrop-filter: blur(8px);
 }
-.header:not(.scrolled) .lang-toggle button { color: oklch(1 0 0 / 0.75); }
-.header:not(.scrolled) .lang-toggle button.active { background: #fff; color: var(--ink); }
-.header:not(.scrolled) .menu-btn span { background: #fff; }
-.header:not(.scrolled) .btn-primary {
+.header:not(.scrolled):not(.menu-open) .lang-toggle button { color: oklch(1 0 0 / 0.75); }
+.header:not(.scrolled):not(.menu-open) .lang-toggle button.active { background: #fff; color: var(--ink); }
+.header:not(.scrolled):not(.menu-open) .menu-btn span { background: #fff; }
+.header:not(.scrolled):not(.menu-open) .btn-primary {
   background: oklch(1 0 0 / 0.14);
   box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.4);
   backdrop-filter: blur(8px);
   color: #fff;
 }
-.header:not(.scrolled) .btn-primary:hover { background: var(--teal); box-shadow: none; }
+.header:not(.scrolled):not(.menu-open) .btn-primary:hover { background: var(--teal); box-shadow: none; }
 
 /* ============================================================
    HERO
@@ -642,6 +642,14 @@ html[dir="rtl"] .footer .sea-name { font-family: var(--arabic-d); letter-spacing
 @media (max-width: 1000px) {
   .nav-links { display: none; }
   .menu-btn { display: flex; }
+}
+@media (max-width: 700px) {
+  /* the header CTA lives in the mobile menu — the row can't fit
+     brand + toggle + CTA + hamburger on a phone */
+  .header-inner .btn-primary { display: none; }
+  .nav { gap: 0.8rem; }
+  .nav-actions { gap: 0.6rem; }
+  .brand-name { font-size: 1.35rem; }
 }
 @media (max-width: 880px) {
   .story-grid, .sustain-grid { grid-template-columns: 1fr; gap: 2.5rem; }
