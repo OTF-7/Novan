@@ -9,6 +9,9 @@ export default defineConfig({
     inlineStylesheets: "never",
   },
   vite: {
+    server: {
+      allowedHosts: ["novan.omartaha.net", "novanwater.com", "www.novanwater.com"],
+    },
     preview: {
       allowedHosts: ["novan.omartaha.net", "novanwater.com", "www.novanwater.com"],
     },
