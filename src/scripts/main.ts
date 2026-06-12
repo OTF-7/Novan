@@ -376,26 +376,30 @@ const wavePath = document.querySelector<SVGPathElement>("#footer-wave");
 const seaEl = document.querySelector<HTMLElement>(".footer .sea");
 if (wavePath && seaEl) {
   const svg = wavePath.ownerSVGElement!;
-  const BONES = 4; /* articulation points — few = calm, not curvy */
   const AMP = 11; /* px of rise & fall */
   const MID = 40; /* surface baseline from the sea top */
   const SPEED = 0.0011; /* rad per ms — slow breathing */
   let w = 1440;
   let h = 600;
+  /* one gentle hump per ~360px so the crest reads the same on a phone as
+     on desktop — a fixed bone count looked busy/unnatural when squeezed
+     into a narrow viewport */
+  let bones = 4;
 
   const size = () => {
     w = seaEl.clientWidth || 1440;
     h = seaEl.clientHeight || 600;
+    bones = Math.max(2, Math.round(w / 360));
     svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
   };
 
   const draw = (t: number) => {
-    const seg = w / BONES;
+    const seg = w / bones;
     const y = (i: number) => MID + Math.sin(t + i * 1.7) * AMP;
     /* bottom edge overdraws 4px past the viewBox (clipped) so the path
        fills flush — no anti-aliased hairline against the backdrop */
     let d = `M 0 ${h + 4} L 0 ${y(0).toFixed(2)}`;
-    for (let i = 1; i <= BONES; i++) {
+    for (let i = 1; i <= bones; i++) {
       const cx = (i * seg - seg / 2).toFixed(2);
       d += ` C ${cx} ${y(i - 1).toFixed(2)} ${cx} ${y(i).toFixed(2)} ${(i * seg).toFixed(2)} ${y(i).toFixed(2)}`;
     }
