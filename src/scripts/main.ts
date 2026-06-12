@@ -401,7 +401,7 @@ if (wavePath && seaEl) {
     size();
     draw(0); /* immediate redraw — the rAF loop (if running) keeps it live */
   };
-  if ("ResizeObserver" in window) {
+  if (typeof ResizeObserver !== "undefined") {
     /* fonts/images settling change the sea's height — track it directly */
     new ResizeObserver(onSeaResize).observe(seaEl);
   } else {
@@ -455,7 +455,7 @@ if (menuBtn && mobileMenu) {
 
 /* ---------- language toggle (EN / AR) ---------- */
 const htmlEl = document.documentElement;
-const setLang = (lang: string) => {
+const setLang = (lang: string, persist = true) => {
   const isAR = lang === "ar";
   htmlEl.setAttribute("lang", isAR ? "ar" : "en");
   htmlEl.setAttribute("dir", isAR ? "rtl" : "ltr");
@@ -473,19 +473,20 @@ const setLang = (lang: string) => {
     b.classList.toggle("active", active);
     b.setAttribute("aria-pressed", String(active));
   });
-  try {
-    localStorage.setItem("novan-lang", lang);
-  } catch {
-    /* private mode — ignore */
+  /* only an explicit toggle is remembered — an auto-detected default
+     must not freeze the choice for return visits */
+  if (persist) {
+    try {
+      localStorage.setItem("novan-lang", lang);
+    } catch {
+      /* private mode — ignore */
+    }
   }
 };
 document.querySelectorAll<HTMLButtonElement>(".lang-toggle button").forEach((b) => {
   b.addEventListener("click", () => setLang(b.getAttribute("data-lang") ?? "en"));
 });
-let saved = "en";
-try {
-  saved = localStorage.getItem("novan-lang") ?? "en";
-} catch {
-  /* ignore */
-}
-if (saved !== "en") setLang(saved);
+/* lang-restore.js already resolved the language (saved → locale → en)
+   onto <html>; mirror it into the text/aria without re-persisting */
+const initialLang = htmlEl.getAttribute("lang") === "ar" ? "ar" : "en";
+setLang(initialLang, false);
