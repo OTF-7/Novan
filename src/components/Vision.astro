@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import visionIce from "../assets/film-ice.jpg";
+---
+
+<section class="vision section-pad" id="vision">
+  <div class="wrap vision-grid">
+    <div class="vision-visual media" data-fx="tilt">
+      <div class="ph" data-label="Pure, weightless, Novan"></div>
+      <Image
+        src={visionIce}
+        class="cover"
+        loading="lazy"
+        widths={[480, 800, 1200]}
+        sizes="(max-width: 880px) 100vw, 50vw"
+        alt="Novan bottle floating among ice cubes on deep blue"
+      />
+    </div>
+    <div class="vision-body">
+      <div class="sec-head">
+        <span class="kicker" data-en="Vision &amp; Mission" data-ar="رؤيتنا ورسالتنا">Vision &amp; Mission</span>
+        <h2>
+          <span data-en="The leading name in " data-ar="العلامة الرائدة في ">The leading name in </span><span
+            class="accent"
+            data-en="pure water."
+            data-ar="المياه النقية.">pure water.</span
+          >
+        </h2>
+      </div>
+      <div class="vision-block reveal">
+        <h3 data-en="Our vision" data-ar="رؤيتنا">Our vision</h3>
+        <p
+          data-en="To become the leading mineral-water brand across Yemen and the regional markets — committed to innovation, sustainability and exceptional quality."
+          data-ar="أن نصبح العلامة التجارية الرائدة في صناعة وتوزيع المياه المعدنية على مستوى اليمن والأسواق الإقليمية، مع الالتزام بالابتكار والاستدامة والجودة الفائقة."
+        >
+          To become the leading mineral-water brand across Yemen and the regional markets — committed to
+          innovation, sustainability and exceptional quality.
+        </p>
+      </div>
+      <div class="vision-block reveal d1">
+        <h3 data-en="Our mission" data-ar="رسالتنا">Our mission</h3>
+        <p
+          data-en="Pure mineral water at the highest standards of quality — drawn from natural sources and treated with the latest technology, protecting consumer health while developing our community and supporting the Yemeni economy."
+          data-ar="تقديم مياه معدنية نقية بأعلى معايير الجودة، مستمدة من مصادر طبيعية ومعالجة بأحدث التقنيات العالمية، لضمان صحة وسلامة المستهلك مع تعزيز دورنا في تنمية المجتمع ودعم الاقتصاد اليمني."
+        >
+          Pure mineral water at the highest standards of quality — drawn from natural sources and treated
+          with the latest technology, protecting consumer health while developing our community and
+          supporting the Yemeni economy.
+        </p>
+      </div>
+      <div class="values-row reveal d2">
+        <span class="value-chip" data-en="Sustainable quality" data-ar="الجودة المستدامة">Sustainable quality</span>
+        <span class="value-chip" data-en="Transparency" data-ar="الشفافية">Transparency</span>
+        <span class="value-chip" data-en="Innovation" data-ar="الابتكار">Innovation</span>
+        <span class="value-chip" data-en="Environmental care" data-ar="الاستدامة البيئية">Environmental care</span>
+        <span class="value-chip" data-en="Women's empowerment" data-ar="تمكين المرأة">Women's empowerment</span>
+      </div>
+    </div>
+  </div>
+</section>

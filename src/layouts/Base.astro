@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import heroImage from "../assets/hero-arc.jpg";
 
 interface Props {
   title: string;
@@ -7,8 +8,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const heroImage =
-  "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2000&q=80";
+const ogImage = new URL(heroImage.src, Astro.site);
 ---
 
 <!doctype html>
@@ -18,12 +18,12 @@ const heroImage =
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#1d2c40" />
+    <meta name="theme-color" content="#1c2f56" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={heroImage} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:url" content={Astro.site} />
     <link rel="canonical" href={Astro.site} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -35,10 +35,9 @@ const heroImage =
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Baloo+Bhaijaan+2:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" as="image" href={heroImage} fetchpriority="high" />
   </head>
   <body>
     <slot />

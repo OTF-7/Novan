@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+import delivery from "../assets/community-cases.jpg";
+import customLabel from "../assets/community-craft.jpg";
+---
+
+<section class="services section-pad" id="services">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="kicker reveal" data-en="Services" data-ar="خدماتنا">Services</span>
+      <h2 class="reveal d1">
+        <span data-en="Beyond " data-ar="أبعد من ">Beyond </span><span
+          class="accent"
+          data-en="the bottle."
+          data-ar="العبوة.">the bottle.</span
+        >
+      </h2>
+    </div>
+
+    <div class="services-grid">
+      <article class="comm-card reveal">
+        <div class="cimg media" data-fx="tilt">
+          <div class="ph" data-label="Delivery, everywhere"></div>
+          <Image
+            src={delivery}
+            class="cover"
+            loading="lazy"
+            widths={[480, 800, 1100]}
+            sizes="(max-width: 880px) 100vw, 50vw"
+            alt="Cases of Novan water ready for delivery"
+          />
+        </div>
+        <div class="cbody">
+          <span class="ctag" data-en="Delivery" data-ar="توصيل">Delivery</span>
+          <h3 data-en="Fast delivery, every region" data-ar="توصيل سريع لكل المناطق">
+            Fast delivery, every region
+          </h3>
+          <p
+            data-en="An advanced distribution network keeps Novan available across all regions — homes, shops and businesses, all year round."
+            data-ar="شبكة توزيع متطورة تُبقي نوفان متوفرة في جميع المناطق — للمنازل والمتاجر والمنشآت، على مدار العام."
+          >
+            An advanced distribution network keeps Novan available across all regions — homes, shops and
+            businesses, all year round.
+          </p>
+        </div>
+      </article>
+
+      <article class="comm-card reveal d1">
+        <div class="cimg media" data-fx="tilt">
+          <div class="ph" data-label="Your brand, our water"></div>
+          <Image
+            src={customLabel}
+            class="cover"
+            loading="lazy"
+            widths={[480, 800, 1100]}
+            sizes="(max-width: 880px) 100vw, 50vw"
+            alt="A custom woven sleeve dressing a Novan bottle"
+          />
+        </div>
+        <div class="cbody">
+          <span class="ctag" data-en="Custom label" data-ar="علامة خاصة">Custom label</span>
+          <h3 data-en="Bottles with your own brand" data-ar="عبوات بعلامتك التجارية">
+            Bottles with your own brand
+          </h3>
+          <p
+            data-en="Custom-designed bottles for companies, restaurants and hotels — your identity, our purity."
+            data-ar="تصميم عبوات خاصة للشركات والمطاعم والفنادق بعلامات تجارية مخصصة — هويتك أنت، ونقاؤنا نحن."
+          >
+            Custom-designed bottles for companies, restaurants and hotels — your identity, our purity.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

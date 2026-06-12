@@ -1,16 +1,12 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
+---
+
 <header class="header">
   <div class="header-inner">
     <a href="#top" class="brand" aria-label="Novan Water" data-aria-en="Novan Water" data-aria-ar="مياه نوفان">
-      <span class="brand-mark">
-        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <path
-            d="M16 2C16 2 5 14.5 5 21.5C5 27.3 9.9 31 16 31C22.1 31 27 27.3 27 21.5C27 14.5 16 2 16 2Z"
-            fill="oklch(0.55 0.085 213)"></path>
-          <path d="M16 2C16 2 5 14.5 5 21.5C5 27.3 9.9 31 16 31V2Z" fill="oklch(0.42 0.075 218)"></path>
-          <ellipse cx="12" cy="22" rx="2.4" ry="3.4" fill="white" opacity="0.45"></ellipse>
-        </svg>
-      </span>
-      <span class="brand-name" data-en="Novan" data-ar="نوفان">Novan</span>
+      <Image src={logo} alt="" class="brand-logo" height={100} densities={[1, 2]} loading="eager" />
     </a>
 
     <nav class="nav">

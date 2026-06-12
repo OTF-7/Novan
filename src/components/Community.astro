@@ -1,40 +1,45 @@
 ---
+import { Image } from "astro:assets";
+import imgJobs from "../assets/film-box.jpg";
+import imgInitiatives from "../assets/lifestyle-table.jpg";
+import imgWomen from "../assets/film-family.jpg"; /* TODO: replace with a real women-at-work photo from the client */
+
 const cards = [
   {
     delay: "",
-    phLabel: "Relief distribution",
-    img: "https://images.unsplash.com/photo-1538300342682-cf57afb97285?auto=format&fit=crop&w=900&q=80",
-    alt: "Hands cupping clean water",
-    tag: "Relief",
-    tagAr: "إغاثة",
-    title: "Clean water in hard seasons",
-    titleAr: "مياه نظيفة في المواسم الصعبة",
-    desc: "Emergency water delivered to families and shelters across the region.",
-    descAr: "مياه طارئة تصل إلى العائلات والمآوي في مختلف أنحاء المنطقة.",
+    phLabel: "Yemeni talent",
+    img: imgJobs,
+    alt: "Hands offering Novan water from a box",
+    tag: "Local talent",
+    tagAr: "كوادر يمنية",
+    title: "Jobs for Yemeni hands",
+    titleAr: "فرص عمل للكوادر اليمنية",
+    desc: "Empowering local engineers and technicians with real opportunities and continuous training.",
+    descAr: "نُمكّن المهندسين والفنيين المحليين بفرص عمل حقيقية وتدريب مستمر.",
   },
   {
     delay: "d1",
-    phLabel: "School children",
-    img: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-    alt: "Smiling school children",
-    tag: "Schools",
-    tagAr: "مدارس",
-    title: "Hydration for classrooms",
-    titleAr: "ماء نقي للفصول الدراسية",
-    desc: "Supplying schools so every student learns with clean water on hand.",
-    descAr: "نزوّد المدارس ليتعلّم كل طالب ومعه مياه نظيفة.",
+    phLabel: "Community initiatives",
+    img: imgInitiatives,
+    alt: "A shared table with Novan bottles",
+    tag: "Initiatives",
+    tagAr: "مبادرات",
+    title: "Giving, done seriously",
+    titleAr: "عطاء بمنهجية",
+    desc: "Social initiatives planned and delivered with partner institutions across the community.",
+    descAr: "مبادرات اجتماعية تُقيَّم وتُنفَّذ بدقة بالتعاون مع المؤسسات المختلفة لدعم المجتمع.",
   },
   {
     delay: "d2",
-    phLabel: "Community gathering",
-    img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80",
-    alt: "Shared dinner table",
-    tag: "Ramadan",
-    tagAr: "رمضان",
-    title: "At every iftar table",
-    titleAr: "على كل مائدة إفطار",
-    desc: "Seasonal giving that keeps community gatherings refreshed and dignified.",
-    descAr: "عطاء موسمي يبقي تجمّعات المجتمع منتعشة وكريمة.",
+    phLabel: "Women's empowerment",
+    img: imgWomen,
+    alt: "Novan bottles of every size standing together",
+    tag: "Empowerment",
+    tagAr: "تمكين",
+    title: "Women, inside and out",
+    titleAr: "تمكين المرأة",
+    desc: "Supporting women's role across the factory and beyond — a core value, not a slogan.",
+    descAr: "ندعم دور المرأة ونمكّنها في مختلف المجالات داخل المصنع وخارجه — قيمة أساسية لا شعاراً.",
   },
 ];
 ---
@@ -58,7 +63,14 @@ const cards = [
           <article class={`comm-card reveal ${c.delay}`}>
             <div class="cimg media">
               <div class="ph" data-label={c.phLabel} />
-              <img class="cover" loading="lazy" alt={c.alt} src={c.img} />
+              <Image
+                class="cover"
+                loading="lazy"
+                widths={[480, 800]}
+                sizes="(max-width: 880px) 100vw, 33vw"
+                alt={c.alt}
+                src={c.img}
+              />
             </div>
             <div class="cbody">
               <span class="ctag" data-en={c.tag} data-ar={c.tagAr}>

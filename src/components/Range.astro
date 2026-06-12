@@ -1,30 +1,36 @@
 ---
-import BottleArt from "./BottleArt.astro";
+import { Image } from "astro:assets";
+/* TODO: per-SKU cut-outs coming from the client — 500ml duplicated for now */
+import cutout from "../assets/bottle-cutout-500.png";
+import hoverTable from "../assets/lifestyle-table.jpg";
+import hoverGlass from "../assets/lifestyle-glass.jpg";
+import hoverStill from "../assets/lifestyle-still.jpg";
+import hoverDrape from "../assets/lifestyle-drape.jpg";
 
+/* Real Novan SKUs per the 2025 brand profile:
+   small 200ml & 330ml · medium 500ml & 1L · large 1.5L & 5L */
 const products = [
   {
     delay: "",
-    variant: "330",
     name: "Novan 330ml",
     nameAr: "نوفان 330 مل",
-    meta: "330 ML · PET",
-    metaAr: "330 مل · PET",
-    alt: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80",
-    altAlt: "Novan 330ml in use",
-    desc: "The grab-and-go. Sized for meetings, gyms and journeys.",
-    descAr: "الرفيق السريع. بحجم مثالي للاجتماعات والنوادي والترحال.",
+    meta: "330 ML · ALSO IN 200 ML",
+    metaAr: "330 مل · متوفر أيضاً 200 مل",
+    hover: hoverTable,
+    hoverAlt: "Novan bottles on a shared table",
+    desc: "The grab-and-go. Sized for meetings, school bags and journeys.",
+    descAr: "الرفيق السريع. بحجم مثالي للاجتماعات والحقائب والترحال.",
     tag: "On the move",
     tagAr: "للتنقّل",
   },
   {
     delay: "d1",
-    variant: "600",
-    name: "Novan 600ml",
-    nameAr: "نوفان 600 مل",
-    meta: "600 ML · PET",
-    metaAr: "600 مل · PET",
-    alt: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=700&q=80",
-    altAlt: "Novan 600ml poured",
+    name: "Novan 500ml",
+    nameAr: "نوفان 500 مل",
+    meta: "500 ML · ALSO IN 1 L",
+    metaAr: "500 مل · متوفر أيضاً 1 لتر",
+    hover: hoverGlass,
+    hoverAlt: "Novan poured into a glass with fresh mint",
     desc: "Our everyday bottle — the one that lives on every desk.",
     descAr: "عبوتنا اليومية — الحاضرة على كل مكتب.",
     tag: "Everyday",
@@ -32,13 +38,12 @@ const products = [
   },
   {
     delay: "d2",
-    variant: "1500",
     name: "Novan 1.5L",
     nameAr: "نوفان 1.5 لتر",
     meta: "1.5 L · PET",
     metaAr: "1.5 لتر · PET",
-    alt: "https://images.unsplash.com/photo-1553564552-02656d6a2390?auto=format&fit=crop&w=700&q=80",
-    altAlt: "Novan 1.5L on the table",
+    hover: hoverStill,
+    hoverAlt: "Novan 1.5L on a calm blue table",
     desc: "For the table and the family fridge. Shared, refilled, loved.",
     descAr: "لمائدة العائلة وثلاجة المنزل. تُشارك وتُملأ ويُحبّها الجميع.",
     tag: "At home",
@@ -46,17 +51,16 @@ const products = [
   },
   {
     delay: "d3",
-    variant: "19000",
-    name: "Novan 19L",
-    nameAr: "نوفان 19 لتر",
-    meta: "19 L · DISPENSER",
-    metaAr: "19 لتر · برّاد",
-    alt: "https://images.unsplash.com/photo-1521207418485-99c705420785?auto=format&fit=crop&w=700&q=80",
-    altAlt: "Novan water from the dispenser",
-    desc: "The office and home dispenser. Pure water, delivered to your door.",
-    descAr: "عبوة المكتب والمنزل. مياه نقية تصل إلى بابك.",
-    tag: "Dispenser",
-    tagAr: "برّاد",
+    name: "Novan 5L",
+    nameAr: "نوفان 5 لتر",
+    meta: "5 L · FAMILY",
+    metaAr: "5 لتر · عائلي",
+    hover: hoverDrape,
+    hoverAlt: "Novan bottles gathered on a draped cloth",
+    desc: "The family reserve — for kitchens, gatherings and generous pours.",
+    descAr: "مخزون العائلة — للمطابخ والتجمعات والضيافة الكريمة.",
+    tag: "Family size",
+    tagAr: "حجم عائلي",
   },
 ] as const;
 ---
@@ -86,9 +90,16 @@ const products = [
           <article class={`product reveal ${p.delay}`}>
             <div class="product-img media">
               <div class="bottle-art" aria-hidden="true">
-                <BottleArt variant={p.variant} />
+                <Image src={cutout} alt="" widths={[320, 560]} sizes="(max-width: 560px) 45vw, 320px" />
               </div>
-              <img class="cover alt" loading="lazy" alt={p.altAlt} src={p.alt} />
+              <Image
+                class="cover alt"
+                loading="lazy"
+                widths={[480, 700]}
+                sizes="(max-width: 560px) 50vw, (max-width: 1080px) 45vw, 320px"
+                alt={p.hoverAlt}
+                src={p.hover}
+              />
             </div>
             <div class="pname" data-en={p.name} data-ar={p.nameAr}>
               {p.name}

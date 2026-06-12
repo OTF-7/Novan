@@ -1,3 +1,8 @@
+---
+import { Image } from "astro:assets";
+import caps from "../assets/sustain-caps.jpg";
+---
+
 <section class="sustain section-pad">
   <div class="wrap sustain-grid">
     <div class="sustain-body">
@@ -27,11 +32,11 @@
             ></span
           >
           <p>
-            <b data-en="Lightweight bottles." data-ar="عبوات أخف وزناً.">Lightweight bottles.</b>
+            <b data-en="Less water, less energy." data-ar="ماء أقل، طاقة أقل.">Less water, less energy.</b>
             <span
-              data-en="Redesigned with less plastic in every cap and body."
-              data-ar="أعيد تصميمها لاستخدام بلاستيك أقل في كل غطاء وجسم."
-              >Redesigned with less plastic in every cap and body.</span
+              data-en="We invest in technology that cuts water and energy consumption across the line."
+              data-ar="نستثمر في تقنيات تقلل استهلاك المياه والطاقة في خطوط الإنتاج."
+              >We invest in technology that cuts water and energy consumption across the line.</span
             >
           </p>
         </div>
@@ -69,11 +74,13 @@
     </div>
     <div class="sustain-visual media" data-fx="tilt">
       <div class="ph" data-label="The water we protect"></div>
-      <img
+      <Image
+        src={caps}
         class="cover"
         loading="lazy"
-        alt="Ocean wave at dusk"
-        src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=1100&q=80"
+        widths={[480, 800, 1100]}
+        sizes="(max-width: 880px) 100vw, 50vw"
+        alt="Novan bottles seen from above, caps beaded with water"
       />
     </div>
   </div>

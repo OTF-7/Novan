@@ -1,22 +1,39 @@
+---
+import { Image } from "astro:assets";
+import purityIce from "../assets/purity-ice.jpg";
+---
+
 <section class="process section-pad" id="process">
   <div class="wrap">
     <div class="sec-head center">
       <span class="kicker reveal" data-en="Purity" data-ar="النقاء">Purity</span>
       <h2 class="reveal d1">
-        <span data-en="Nine stages between " data-ar="تسع مراحل بين ">Nine stages between </span><span
+        <span data-en="From the source, " data-ar="من المصدر، ">From the source, </span><span
           class="accent"
-          data-en="source and seal."
-          data-ar="المصدر والختم.">source and seal.</span
+          data-en="to the seal."
+          data-ar="إلى الختم.">to the seal.</span
         >
       </h2>
       <p
         class="reveal d2"
-        data-en="Nature does most of the work — our role is to protect it. We test, filter and seal with obsessive care, then verify every batch in our own laboratory."
-        data-ar="الطبيعة تقوم بمعظم العمل، ودورنا أن نحميه — نفحص ونُنقّي ونختم بعناية فائقة، ثم نتحقق من كل دفعة في مختبرنا الخاص."
+        data-en="Multi-stage filtration, UV purification and ozone treatment — verified by precise daily testing against international health standards, in our own laboratory."
+        data-ar="ترشيح متعدد المراحل وتنقية بالأشعة فوق البنفسجية ومعالجة بالأوزون — تتحقق منها فحوصات دقيقة يومية وفق المواصفات الصحية العالمية في مختبرنا الخاص."
       >
-        Nature does most of the work — our role is to protect it. We test, filter and seal with obsessive
-        care, then verify every batch in our own laboratory.
+        Multi-stage filtration, UV purification and ozone treatment — verified by precise daily testing
+        against international health standards, in our own laboratory.
       </p>
+    </div>
+
+    <div class="process-visual media" data-fx="tilt">
+      <div class="ph" data-label="Cold. Clean. Sealed."></div>
+      <Image
+        src={purityIce}
+        class="cover"
+        loading="lazy"
+        widths={[768, 1280, 1800]}
+        sizes="(max-width: 880px) 100vw, 80vw"
+        alt="A Novan bottle buried in crushed ice"
+      />
     </div>
 
     <div class="process-grid">

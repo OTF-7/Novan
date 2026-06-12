@@ -19,20 +19,21 @@
   --line:        oklch(0.875 0.012 100);
   --line-soft:   oklch(0.915 0.009 100);
 
-  /* brand — glacial blue */
-  --teal:        oklch(0.52 0.075 242);
-  --teal-deep:   oklch(0.40 0.068 248);
-  --teal-soft:   oklch(0.932 0.018 235);
-  --teal-tint:   oklch(0.878 0.040 235);
-  --ice:         oklch(0.845 0.050 230);
-  --band:        oklch(0.285 0.045 248);   /* deep marine band */
-  --band-2:      oklch(0.245 0.040 252);
+  /* brand — Novan ocean blue & cyan (sampled from the 2025 profile/logo) */
+  --teal:        oklch(0.47 0.105 248);
+  --teal-deep:   oklch(0.385 0.095 252);
+  --teal-soft:   oklch(0.935 0.022 235);
+  --teal-tint:   oklch(0.875 0.045 233);
+  --ice:         oklch(0.79 0.115 228);    /* brand cyan — accents on dark */
+  --band:        oklch(0.31 0.075 255);    /* deep marine band */
+  --band-2:      oklch(0.26 0.07 258);
 
   /* type */
   --display: "Schibsted Grotesk", "Hanken Grotesk", sans-serif;
   --sans:    "Hanken Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
   --arabic:  "IBM Plex Sans Arabic", "Hanken Grotesk", sans-serif;
-  --arabic-d:"Reem Kufi", "IBM Plex Sans Arabic", sans-serif;
+  /* Baloo Bhaijaan 2 ≈ closest free match to the brand's Noor Bold */
+  --arabic-d:"Baloo Bhaijaan 2", "IBM Plex Sans Arabic", sans-serif;
 
   /* texture — fine grain, used on every surface */
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -177,11 +178,12 @@ html[dir="rtl"] .link-arrow:hover .arrow { transform: scaleX(-1) translateX(5px)
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; max-width: var(--maxw); margin: 0 auto; padding-inline: var(--pad); }
 .brand { display: flex; align-items: center; gap: 0.6rem; }
-.brand-mark { width: 24px; height: 29px; flex: none; transition: transform 0.6s var(--ease); }
-.brand:hover .brand-mark { transform: translateY(-3px) rotate(-5deg); }
-.brand-mark svg { width: 100%; height: 100%; display: block; }
-.brand-name { font-family: var(--display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
-html[dir="rtl"] .brand-name { font-family: var(--arabic-d); }
+.brand-logo { height: 50px; width: auto; display: block; transition: transform 0.6s var(--ease), filter 0.45s var(--ease); }
+.brand:hover .brand-logo { transform: translateY(-3px); }
+/* over the hero the real logo's dark parts would sink into the photo —
+   render it as a clean white silhouette until the bar gets its surface */
+.header:not(.scrolled):not(.menu-open) .brand-logo { filter: brightness(0) invert(1); }
+.footer .brand-logo { height: 84px; filter: brightness(0) invert(1); opacity: 0.95; }
 
 .nav { display: flex; align-items: center; gap: 2.2rem; }
 .nav-links { display: flex; gap: 1.9rem; }
@@ -190,8 +192,10 @@ html[dir="rtl"] .brand-name { font-family: var(--arabic-d); }
 .nav-links a:hover { color: var(--teal-deep); }
 .nav-links a:hover::after { width: 100%; }
 .nav-actions { display: flex; align-items: center; gap: 1.05rem; }
-.lang-toggle { display: flex; align-items: center; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; border: 1px solid var(--line); border-radius: 100px; overflow: hidden; background: var(--paper); }
-.lang-toggle button { padding: 0.5em 0.85em; color: var(--ink-faint); transition: all 0.3s; }
+.lang-toggle { display: flex; align-items: stretch; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; border: 1px solid var(--line); border-radius: 100px; overflow: hidden; background: var(--paper); }
+/* stretch + centered content: AR/EN glyph heights differ, and the active
+   fill must cover the full pill height with no hairline gaps */
+.lang-toggle button { padding: 0.5em 0.85em; color: var(--ink-faint); transition: all 0.3s; display: inline-flex; align-items: center; line-height: 1; }
 /* comfortable touch targets on coarse pointers without bloating the desktop header */
 @media (pointer: coarse) { .lang-toggle button { padding: 0.9em 1em; } }
 .lang-toggle button.active { background: var(--ink); color: var(--bg); }
@@ -202,7 +206,6 @@ html[dir="rtl"] .brand-name { font-family: var(--arabic-d); }
 .menu-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 /* ---- adaptive header: light-on-image until scrolled ---- */
-.header:not(.scrolled):not(.menu-open) .brand-name { color: #fff; }
 .header:not(.scrolled):not(.menu-open) .nav-links a { color: oklch(0.93 0.015 210); }
 .header:not(.scrolled):not(.menu-open) .nav-links a:hover { color: #fff; }
 .header:not(.scrolled):not(.menu-open) .nav-links a::after { background: var(--ice); }
@@ -322,6 +325,43 @@ html[dir="rtl"] .hero-scroll .ring text { direction: ltr; }
 .story-feat p { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.55; }
 
 /* ============================================================
+   VISION / SERVICES / MARKET (brand-profile sections)
+   ============================================================ */
+.vision { background: var(--bg); overflow: hidden; }
+.vision-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+.vision-visual { position: relative; aspect-ratio: 4/5; border-radius: 10px; overflow: hidden; box-shadow: 0 50px 90px -55px oklch(0.35 0.07 252 / 0.6); will-change: transform, opacity; }
+.vision-body .sec-head { margin-bottom: 2.2rem; }
+.vision-block { padding: 1.3rem 0; border-top: 1px solid var(--line); }
+.vision-block h3 { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: var(--teal-deep); font-family: var(--sans); margin-bottom: 0.5rem; }
+html[dir="rtl"] .vision-block h3 { font-family: var(--arabic); letter-spacing: 0.08em; }
+.vision-block p { color: var(--ink-soft); font-size: 1rem; line-height: 1.65; }
+.values-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; }
+.value-chip {
+  font-size: 0.76rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--teal-deep); background: var(--teal-soft);
+  border: 1px solid var(--teal-tint);
+  padding: 0.55em 1.1em; border-radius: 100px;
+  transition: all 0.35s var(--ease);
+}
+.value-chip:hover { background: var(--teal); border-color: var(--teal); color: #fff; transform: translateY(-2px); }
+
+.services { background: var(--bg-2); }
+.services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; margin-top: 3.4rem; }
+.services-grid .cimg { aspect-ratio: 16/10; }
+
+.market { background: var(--bg); overflow: hidden; }
+.market-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 6vw, 5.5rem); align-items: center; }
+.market-points { margin-top: 2.4rem; }
+.market-visual { position: relative; aspect-ratio: 4/5; border-radius: 10px; overflow: hidden; box-shadow: 0 50px 90px -55px oklch(0.35 0.07 252 / 0.55); will-change: transform, opacity; }
+
+@media (max-width: 880px) {
+  .vision-grid, .market-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .vision-visual, .market-visual { max-height: 70vh; }
+  .market-grid .market-visual { order: -1; }
+  .services-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
    STATS
    ============================================================ */
 .stats { background: var(--bg); border-bottom: 1px solid var(--line-soft); }
@@ -359,9 +399,9 @@ html[dir="rtl"] .hero-scroll .ring text { direction: ltr; }
   padding: 9% 24%;
   transition: opacity 0.65s var(--ease), transform 0.9s var(--ease);
 }
-.product-img .bottle-art svg {
-  width: auto; height: 100%; max-width: 100%;
-  filter: drop-shadow(0 20px 22px oklch(0.4 0.06 245 / 0.26));
+.product-img .bottle-art img {
+  width: auto; height: 100%; max-width: 100%; object-fit: contain;
+  filter: drop-shadow(0 20px 22px oklch(0.4 0.07 252 / 0.26));
 }
 .product:hover .product-img .bottle-art { opacity: 0; transform: scale(0.94); }
 .product-img img.cover { transition: opacity 0.65s var(--ease), transform 0.9s var(--ease); }
@@ -434,6 +474,13 @@ html[dir="rtl"] .films-nav button svg { transform: scaleX(-1); }
    PROCESS
    ============================================================ */
 .process { background: var(--bg); }
+.process-visual {
+  position: relative; aspect-ratio: 21/9; border-radius: 12px; overflow: hidden;
+  margin-top: 3.2rem;
+  box-shadow: 0 50px 90px -55px oklch(0.35 0.07 252 / 0.55);
+  will-change: transform, opacity;
+}
+@media (max-width: 700px) { .process-visual { aspect-ratio: 4/3; } }
 .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3.4rem; counter-reset: step; }
 .step { position: relative; padding-top: 2.6rem; border-top: 1px solid var(--line); transition: border-color 0.4s; }
 .step:hover { border-top-color: var(--teal); }
@@ -517,6 +564,13 @@ html[dir="rtl"] .voice.leaving { transform: translateX(48px); }
 .cta h2 .accent { color: var(--ice); }
 .cta p { margin-top: 1.3rem; color: oklch(0.88 0.025 210); font-size: 1.12rem; }
 .cta .hero-cta { justify-content: center; margin-top: 2.4rem; }
+/* partner benefits — quiet proof chips between copy and button */
+.cta-points { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1.6rem; }
+.cta-point {
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.03em; color: oklch(0.9 0.03 220);
+  border: 1px solid oklch(1 0 0 / 0.25); background: oklch(1 0 0 / 0.07);
+  padding: 0.5em 1.05em; border-radius: 100px;
+}
 /* quiet secondary channel under the primary CTA */
 .cta-call {
   display: inline-block; margin-top: 1.3rem;
@@ -568,7 +622,6 @@ html[dir="rtl"] .voice.leaving { transform: translateX(48px); }
   padding-block: clamp(6rem, 10vw, 8rem) 4rem; /* clears the undulating surface */
   border-bottom: 1px solid oklch(1 0 0 / 0.12);
 }
-.footer .brand-name { color: #fff; }
 .footer-blurb { margin-top: 1.3rem; max-width: 34ch; font-size: 0.95rem; line-height: 1.6; }
 .footer-col h3 { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: oklch(0.7 0.035 218); margin-bottom: 1.3rem; }
 .footer-col a, .footer-col p { display: block; font-size: 0.94rem; margin-bottom: 0.8rem; transition: color 0.3s; }
@@ -657,7 +710,7 @@ html[dir="rtl"] .footer .sea-name { font-family: var(--arabic-d); letter-spacing
   .header-inner .btn-primary { display: none; }
   .nav { gap: 0.8rem; }
   .nav-actions { gap: 0.6rem; }
-  .brand-name { font-size: 1.35rem; }
+  .brand-logo { height: 42px; }
 }
 @media (max-width: 880px) {
   .story-grid, .sustain-grid { grid-template-columns: 1fr; gap: 2.5rem; }

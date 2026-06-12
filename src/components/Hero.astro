@@ -1,11 +1,19 @@
+---
+import { Image } from "astro:assets";
+import heroArc from "../assets/hero-arc.jpg";
+---
+
 <section class="hero" id="top">
   <div class="hero-bg" data-parallax="0.16">
-    <div class="ph" data-label="Mountain lake at dusk"></div>
-    <img
+    <div class="ph" data-label="Novan bottles on deep blue"></div>
+    <Image
+      src={heroArc}
       class="cover"
-      alt="Still mountain lake beneath high peaks at dusk"
+      alt="Novan bottles arced on deep blue under rays of light"
       fetchpriority="high"
-      src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2000&q=80"
+      loading="eager"
+      widths={[768, 1280, 1920, 2400]}
+      sizes="100vw"
     />
   </div>
   <div class="hero-scrim"></div>

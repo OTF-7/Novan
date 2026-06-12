@@ -132,12 +132,15 @@ if (fxEls.length && !prefersReduced) {
 /* ---------- animated counters ---------- */
 const animateCount = (el: HTMLElement) => {
   const target = parseFloat(el.getAttribute("data-count") ?? "0");
+  /* data-plain: no thousands separator (years like 2019, not "2,019") */
+  const plain = el.hasAttribute("data-plain");
   const dur = 1600;
   const start = performance.now();
   const tick = (now: number) => {
     const p = Math.min((now - start) / dur, 1);
     const eased = 1 - Math.pow(1 - p, 3);
-    el.textContent = Math.round(target * eased).toLocaleString();
+    const v = Math.round(target * eased);
+    el.textContent = plain ? String(v) : v.toLocaleString();
     if (p < 1) requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);

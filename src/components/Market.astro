@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import drape from "../assets/lifestyle-drape.jpg";
+---
+
+<section class="market section-pad" id="market">
+  <div class="wrap market-grid">
+    <div class="market-body">
+      <div class="sec-head">
+        <span class="kicker" data-en="Market &amp; Growth" data-ar="السوق والنمو">Market &amp; Growth</span>
+        <h2>
+          <span data-en="From Yemen, " data-ar="من اليمن ">From Yemen, </span><span
+            class="accent"
+            data-en="outward."
+            data-ar="إلى الإقليم.">outward.</span
+          >
+        </h2>
+      </div>
+      <div class="sustain-points market-points">
+        <div class="sustain-point reveal">
+          <span class="dot"
+            ><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+              ><path d="M20 6L9 17l-5-5"></path></svg
+            ></span
+          >
+          <p>
+            <b data-en="Families across Yemen." data-ar="العائلات في كل اليمن.">Families across Yemen.</b>
+            <span
+              data-en="Pure, healthy water at prices fair for every household."
+              data-ar="مياه نقية وصحية بأسعار مناسبة لكل أسرة.">Pure, healthy water at prices fair for every household.</span
+            >
+          </p>
+        </div>
+        <div class="sustain-point reveal d1">
+          <span class="dot"
+            ><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+              ><path d="M20 6L9 17l-5-5"></path></svg
+            ></span
+          >
+          <p>
+            <b data-en="Institutions of every size." data-ar="المؤسسات بكل أحجامها.">Institutions of every size.</b>
+            <span
+              data-en="Hotels, restaurants, major companies and government bodies."
+              data-ar="الفنادق والمطاعم والشركات الكبرى والمؤسسات الحكومية.">Hotels, restaurants, major companies and government bodies.</span
+            >
+          </p>
+        </div>
+        <div class="sustain-point reveal d2">
+          <span class="dot"
+            ><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+              ><path d="M20 6L9 17l-5-5"></path></svg
+            ></span
+          >
+          <p>
+            <b data-en="Events &amp; mega-projects." data-ar="الفعاليات والمشاريع الكبرى.">Events &amp; mega-projects.</b>
+            <span
+              data-en="Reliable supply for official events and large-scale projects."
+              data-ar="إمداد موثوق للفعاليات الرسمية والمشاريع الضخمة.">Reliable supply for official events and large-scale projects.</span
+            >
+          </p>
+        </div>
+        <div class="sustain-point reveal d3">
+          <span class="dot"
+            ><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+              ><path d="M20 6L9 17l-5-5"></path></svg
+            ></span
+          >
+          <p>
+            <b data-en="Regional ambition." data-ar="طموح إقليمي.">Regional ambition.</b>
+            <span
+              data-en="Expanding with strategic partners toward the Gulf and the Middle East, backed by continuous innovation and investment in technology."
+              data-ar="توسّع مع شركاء استراتيجيين نحو الخليج العربي والشرق الأوسط، يدعمه ابتكار مستمر واستثمار في التكنولوجيا والبنية التحتية.">Expanding with strategic partners toward the Gulf and the Middle East, backed by continuous innovation and investment in technology.</span
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="market-visual media" data-fx="tilt">
+      <div class="ph" data-label="Novan, ready to travel"></div>
+      <Image
+        src={drape}
+        class="cover"
+        loading="lazy"
+        widths={[480, 800, 1100]}
+        sizes="(max-width: 880px) 100vw, 50vw"
+        alt="Novan bottles grouped on a draped terracotta cloth"
+      />
+    </div>
+  </div>
+</section>
