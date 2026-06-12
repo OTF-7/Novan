@@ -517,6 +517,14 @@ html[dir="rtl"] .voice.leaving { transform: translateX(48px); }
 .cta h2 .accent { color: var(--ice); }
 .cta p { margin-top: 1.3rem; color: oklch(0.88 0.025 210); font-size: 1.12rem; }
 .cta .hero-cta { justify-content: center; margin-top: 2.4rem; }
+/* quiet secondary channel under the primary CTA */
+.cta-call {
+  display: inline-block; margin-top: 1.3rem;
+  font-size: 0.95rem; color: oklch(0.85 0.03 215 / 0.85);
+  transition: color 0.3s;
+}
+.cta-call bdi { font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.cta-call:hover { color: #fff; }
 
 /* ============================================================
    WATER FOOTER — Path-style: one living full-width wave (JS-drawn),
