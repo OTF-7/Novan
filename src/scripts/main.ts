@@ -74,7 +74,8 @@ if (parallaxEls.length && !prefersReduced) {
 }
 
 /* ---------- scroll-driven FX (Aupale-style) ----------
-   data-fx="tilt" : appears from nothing — rotates upright and grows
+   data-fx="tilt" : appears from nothing — rotates upright and grows (signature, used once)
+   data-fx="rise" : fades in and lifts up, no rotate/scale (calm, for repeated visuals)
    data-fx="grow" : scales up gently as it enters
    State is computed from scroll position, so a fresh load mid-page
    shows the correct (visible) state immediately. */
@@ -95,9 +96,13 @@ if (fxEls.length && !prefersReduced) {
       /* lerp towards target for buttery motion */
       st.cur = st.cur < 0 ? p : st.cur + (p - st.cur) * 0.18;
       const v = st.cur;
-      if (el.getAttribute("data-fx") === "tilt") {
+      const mode = el.getAttribute("data-fx");
+      if (mode === "tilt") {
         el.style.opacity = (0.05 + 0.95 * v).toFixed(3);
         el.style.transform = `scale(${(0.82 + 0.18 * v).toFixed(4)}) rotate(${((1 - v) * -5).toFixed(2)}deg)`;
+      } else if (mode === "rise") {
+        el.style.opacity = (0.1 + 0.9 * v).toFixed(3);
+        el.style.transform = `translateY(${((1 - v) * 46).toFixed(1)}px)`;
       } else {
         el.style.transform = `scale(${(0.9 + 0.1 * v).toFixed(4)})`;
       }

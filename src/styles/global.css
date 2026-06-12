@@ -384,29 +384,32 @@ html[dir="rtl"] .vision-block h3 { font-family: var(--arabic); letter-spacing: 0
   background: transparent; border: none; padding: 0 0 1.4rem;
   cursor: pointer; display: flex; flex-direction: column;
 }
+/* Path "originals" style: just the bare bottle PNG — no box, no border,
+   no corner — until you hover, when the lifestyle photo crossfades in
+   with a rounded teal-bordered frame. */
 .product-img {
-  aspect-ratio: 1/1.1; border-radius: 16px; overflow: hidden;
-  margin-bottom: 1.25rem; position: relative;
-  border: 1.5px solid transparent;
-  transition: border-color 0.45s var(--ease);
-  background: linear-gradient(165deg, var(--paper), var(--teal-soft)); /* studio backdrop */
+  aspect-ratio: 1/1.25; position: relative; margin-bottom: 1.25rem;
+  overflow: visible; /* the bottle + its shadow may breathe past the box */
 }
-.product:hover .product-img { border-color: var(--teal); }
-/* cut-out bottle render (true transparency) — fades to the lifestyle shot */
 .product-img .bottle-art {
   position: absolute; inset: 0; z-index: 1;
-  display: grid; place-items: center;
-  padding: 9% 24%;
-  transition: opacity 0.65s var(--ease), transform 0.9s var(--ease);
+  display: grid; place-items: center; padding: 0 2%;
+  transition: opacity 0.5s var(--ease), transform 0.7s var(--ease);
 }
 .product-img .bottle-art img {
   width: auto; height: 100%; max-width: 100%; object-fit: contain;
-  filter: drop-shadow(0 20px 22px oklch(0.4 0.07 252 / 0.26));
+  filter: drop-shadow(0 26px 26px oklch(0.4 0.07 252 / 0.22));
 }
-.product:hover .product-img .bottle-art { opacity: 0; transform: scale(0.94); }
-.product-img img.cover { transition: opacity 0.65s var(--ease), transform 0.9s var(--ease); }
-.product-img img.alt { opacity: 0; transform: scale(1.07); z-index: 2; }
-.product:hover .product-img img.alt { opacity: 1; transform: scale(1); }
+.product:hover .product-img .bottle-art { opacity: 0; transform: translateY(-6px) scale(1.03); }
+/* the hover photo carries the only border/corner in the whole card */
+.product-img img.cover {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  z-index: 2; border-radius: 16px;
+  opacity: 0; transform: scale(1.06);
+  transition: opacity 0.6s var(--ease), transform 0.9s var(--ease);
+}
+.product-img img.alt { border: 1.5px solid var(--teal); }
+.product:hover .product-img img.cover { opacity: 1; transform: scale(1); }
 .product .pname { font-family: var(--display); font-weight: 600; letter-spacing: -0.015em; font-size: 1.18rem; }
 .product .pmeta { font-size: 0.7rem; color: var(--ink-faint); margin-top: 0.3rem; font-weight: 700; letter-spacing: 0.1em; }
 .product .pdesc { font-size: 0.92rem; color: var(--ink-soft); margin-top: 0.85rem; line-height: 1.5; flex: 1; }
@@ -533,10 +536,13 @@ html[dir="rtl"] .voice { transform: translateX(-48px); }
 .voice.leaving { opacity: 0; transform: translateX(-48px); }
 html[dir="rtl"] .voice.leaving { transform: translateX(48px); }
 .voice.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+/* must out-specify `html[dir=rtl] .voice` or the active quote keeps its
+   -48px slide offset in RTL and clips off the left edge on mobile */
+html[dir="rtl"] .voice.active { transform: translateX(0); }
 .voice blockquote {
   font-family: var(--display); font-weight: 600;
-  font-size: clamp(1.7rem, 4.2vw, 3.4rem); line-height: 1.12; letter-spacing: -0.03em;
-  color: #fff; max-width: 26ch; text-wrap: pretty;
+  font-size: clamp(1.6rem, 4.6vw, 3.4rem); line-height: 1.13; letter-spacing: -0.03em;
+  color: #fff; max-width: min(26ch, 100%); text-wrap: pretty; overflow-wrap: break-word;
 }
 .voice blockquote .accent { color: var(--ice); }
 .voice .qby { margin-top: 1.6rem; font-size: 0.95rem; color: oklch(0.82 0.03 210); }
