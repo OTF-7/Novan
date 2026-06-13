@@ -180,7 +180,7 @@ html[dir="rtl"] .link-arrow:hover .arrow { transform: scaleX(-1) translateX(5px)
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; max-width: var(--maxw); margin: 0 auto; padding-inline: var(--pad); }
 .brand { display: flex; align-items: center; gap: 0.6rem; }
-.brand-logo { height: 50px; width: auto; display: block; transition: transform 0.6s var(--ease), filter 0.45s var(--ease); }
+.brand-logo { height: 62px; width: auto; display: block; transition: transform 0.6s var(--ease), filter 0.45s var(--ease); }
 .brand:hover .brand-logo { transform: translateY(-3px); }
 /* over the hero the real logo's dark parts would sink into the photo —
    render it as a clean white silhouette until the bar gets its surface */
@@ -721,7 +721,7 @@ html[dir="rtl"] .footer .sea-name { font-family: var(--arabic-d); letter-spacing
   .header-inner .btn-primary { display: none; }
   .nav { gap: 0.8rem; }
   .nav-actions { gap: 0.6rem; }
-  .brand-logo { height: 42px; }
+  .brand-logo { height: 54px; }
 }
 @media (max-width: 880px) {
   .story-grid, .sustain-grid { grid-template-columns: 1fr; gap: 2.5rem; }
