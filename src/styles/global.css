@@ -378,7 +378,7 @@ html[dir="rtl"] .vision-block h3 { font-family: var(--arabic); letter-spacing: 0
    ============================================================ */
 .range { background: var(--bg); }
 .range-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; margin-bottom: 3.4rem; flex-wrap: wrap; }
-.range-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
+.range-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
 /* Path-style (verified against drinkpathwater.com): the card itself stays
    quiet — only the IMAGE gets the border on hover, and the product shot
    crossfades into the lifestyle photo with a soft zoom, never a hard swap */
@@ -486,7 +486,7 @@ html[dir="rtl"] .films-nav button svg { transform: scaleX(-1); }
   will-change: transform, opacity;
 }
 @media (max-width: 700px) { .process-visual { aspect-ratio: 4/3; } }
-.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3.4rem; counter-reset: step; }
+.process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.4rem; counter-reset: step; }
 .step { position: relative; padding-top: 2.6rem; border-top: 1px solid var(--line); transition: border-color 0.4s; }
 .step:hover { border-top-color: var(--teal); }
 .step::before { counter-increment: step; content: counter(step, decimal-leading-zero); position: absolute; top: -0.85rem; inset-inline-start: 0; font-family: var(--display); font-weight: 700; font-size: 0.95rem; color: var(--teal-deep); background: var(--bg); padding-inline-end: 0.8rem; }
