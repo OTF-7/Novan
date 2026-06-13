@@ -15,34 +15,6 @@ import visionIce from "../assets/film-ice.jpg";
         sizes="(max-width: 880px) 100vw, 50vw"
         alt="Novan bottle floating among ice cubes on deep blue"
       />
-      <script define:vars={{ visionIce }}>
-        const image = document.querySelector('.vision-visual .cover');
-        const rotationSpeed = 0.5;
-        
-        image.addEventListener('mouseenter', () => {
-          let rotation = 0;
-          const animate = () => {
-            rotation += rotationSpeed;
-            image.style.transform = `rotate(${rotation}deg)`;
-            requestAnimationFrame(animate);
-          };
-          animate();
-        });
-        
-        image.addEventListener('mouseleave', () => {
-          let rotation = 0;
-          const animate = () => {
-            rotation -= rotationSpeed;
-            image.style.transform = `rotate(${rotation}deg)`;
-            if (Math.abs(rotation) < 0.1) {
-              image.style.transform = 'rotate(0deg)';
-              return;
-            }
-            requestAnimationFrame(animate);
-          };
-          animate();
-        });
-      </script>
     </div>
     <div class="vision-body">
       <div class="sec-head">
